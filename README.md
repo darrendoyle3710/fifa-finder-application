@@ -25,6 +25,20 @@ The conception of this project involved setting up a clear structure of requirem
 
 In the four quadrants above, each represents one the prioritisation categories, the **Must Have** section is the most important because it represents requirements which must be met in order to obtain a minimum viable product. The next step is representing the project requirements in a more development-digestible format using a **Kanban board**; the requirements will be broken down through **Epics, Stories and Tasks.**
 ## Analysis ##
+The next phase of the project requires stringent risk analysis to decide on protocols in typical scenarios that may arise during the development life cycle. I created a **Risk Assessment Matrix** to represent and evaluate risks involved in the project going forward. These risks are assessed under the following headings: **Evaluation, Likelihood, Impact, Responsibility, Response and Control Measure.**
+
+#### Risk Assessment Matrix ####
+|   Risk          | Evaluation | Likelihood| Impact  | Responsibility   |Response   | Control Measure  |
+|:----------------|:-----------|:-----    |:-----    |:-----------|:-----------|:-----------     |
+| Application's virtual machine goes down    | Application goes offline     | Low    | High | Microsoft     | Recreate infrastruture on another machine      |  Use infrastructure as code to quickly recreate machine     |
+| Broken version deployed onto production   | Application may not have all required features functional  |   Medium    | High | Developer     | Revert production to latest stable verion  | Automate tests before production push and restrict access to production branch      |
+| ddos attack    | are neat   |    $1    | col 3 is | right-     | $1600      |$1600      |
+| high traffic    | are neat   |    $1    | col 3 is | right-     | $1600      |$1600      |
+| data breach    | are neat   |    $1    | col 3 is | right-     | $1600      |$1600      |
+| regional power outage     | are neat   |    $1    | col 3 is | right-     | $1600      |$1600      |
+| not delivering application requirements on schedule    | are neat   |    $1    | col 3 is | right-     | $1600      |$1600      |
+| zebra    | are neat   |    $1    | col 3 is | right-     | $1600      |$1600      |
+
 ## Design ##
 ## Coding ##
 ## Testing ##
