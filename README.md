@@ -30,14 +30,14 @@ The next phase of the project requires stringent risk analysis to decide on prot
 #### Risk Assessment Matrix ####
 |   Risk          | Evaluation | Likelihood| Impact  | Responsibility   |Response   | Control Measure  |
 |:-------|:------|:---    |:---    |:-------|:------|:-----  |
-| Application's virtual machine goes down | Application goes offline| Low | High | Microsoft  | Recreate infrastruture on another machine |  Use infrastructure as code to quickly recreate machine  |
+| Application's virtual machine goes down | Application goes offline| Low | High | Cloud Service Provider  | Recreate infrastruture on another machine |  Use infrastructure as code to quickly recreate machine  |
 | Broken version deployed onto production   | Application may not have all required features functional  |   Medium    | High | Developer     | Revert production to latest stable verion  | Automate tests before production push and restrict access to production branch      |
 | DDOS attack    | Server goes down |    Medium    | High | Microsoft | Recreate infrastruture on another machine  |  Use infrastructure as code to quickly recreate machine   |
-| High traffic    | Server requests couldbe unreliable/unavailable   |    Medium    | High| Developer   | Buy more azure server network allocation     | Ensure services are elastic      |
-| Data breach    | Customer data compromised   |    $1    | col 3 is | right-     | $1600      |$1600      |
-| regional power outage     | are neat   |    $1    | col 3 is | right-     | $1600      |$1600      |
-| not delivering application requirements on schedule    | are neat   |    $1    | col 3 is | right-     | $1600      |$1600      |
-| zebra    | are neat   |    $1    | col 3 is | right-     | $1600      |$1600      |
+| High traffic    | Server requests could be unreliable/unavailable   |  Medium  | High| Developer  | Buy more azure server network allocation  | Ensure services are elastic|
+| Data breach    | Customer data compromised   |   Medium    | Medium | Developer  | Notify relevant parties | Revise project access hierarchy and advise on latest security practices|
+| Regional power outage     | Application goes offline   |    Low    | High | Cloud Service Provider  | Recreate infrsatructure in another region  | Set up standby server in another region |
+| Not delivering requirements on schedule    | Application wont meet minimum viable prodcut scope  |    Medium    | High | Developer  | Ammend scheduled project delivery time   | Stick to minimum viable product scope as a first priority |
+
 
 
 
