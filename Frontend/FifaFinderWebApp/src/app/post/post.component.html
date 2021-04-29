@@ -1,0 +1,46 @@
+<div class="form-froup row" style="width: 60%;">
+
+    <label class="col-sm-2 col-form-label">Type</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="Type" placeholder="Enter Name">
+    </div>
+    <label class="col-sm-2 col-form-label">Platform</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="Platform" placeholder="Enter Age">
+    </div>
+    <label class="col-sm-2 col-form-label">Position</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="Position" placeholder="Enter Name">
+    </div>
+    <label class="col-sm-2 col-form-label">Player Rating</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="PlayerRating" placeholder="Enter Name">
+    </div>
+    <label class="col-sm-2 col-form-label">Description</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="Description" placeholder="Enter Name">
+    </div>
+
+    <button (click)="addPost()" class="btn btn-primary">
+        Add
+    </button>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Post
+            </th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dataItem of PostList">
+            <td>post type: {{dataItem.Type}}</td>
+            <td>platform: {{dataItem.Platform}}</td>
+            <td>position: {{dataItem.Position}}</td>
+            <td>player rating: {{dataItem.PlayerRating}}</td>
+            <td>description {{dataItem.Description}}</td>
+            <td>created at: {{dataItem.CreatedAt}}</td>
+        </tr>
+    </tbody>
+</table>

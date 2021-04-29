@@ -1,6 +1,6 @@
 ﻿namespace FifaFinderAPI.Models
 {
-    public enum PostType
+    public enum Type
     {
         LookForPlayer,
         LookingForClub

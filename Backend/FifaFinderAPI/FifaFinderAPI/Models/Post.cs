@@ -8,7 +8,7 @@ namespace FifaFinderAPI.Models
     public class Post
     {
         public int ID { get; set; }
-        public PostType PostType { get; set; }
+        public Type Type { get; set; }
         public Platform Platform { get; set; }
         public Position Position { get; set; }
         public PlayerRating PlayerRating { get; set; }
@@ -16,9 +16,9 @@ namespace FifaFinderAPI.Models
         public string Description { get; set; }
 
         public Post() { }
-        public Post(PostType pt, Platform pl, Position pos, PlayerRating prtg, string desc)
+        public Post(Type pt, Platform pl, Position pos, PlayerRating prtg, string desc)
         {
-            PostType = pt;
+            Type = pt;
             Platform = pl;
             Position = pos;
             PlayerRating = prtg;

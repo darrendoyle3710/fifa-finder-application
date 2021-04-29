@@ -28,7 +28,7 @@ namespace FifaFinderAPI.Controllers
         [HttpPost]
         public JsonResult Post(Post post)
         {
-            var postToInsert = new Post(post.PostType, post.Platform, post.Position, post.PlayerRating, post.Description);
+            var postToInsert = new Post(post.Type, post.Platform, post.Position, post.PlayerRating, post.Description);
             dbContext.Posts.Add(postToInsert);
             dbContext.SaveChanges();
             return new JsonResult("Post Created!");

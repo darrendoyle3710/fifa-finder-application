@@ -40,3 +40,5 @@ C:\Users\darren.a.doyle\Project\fifa-finder-application\Backend\FifaFinderAPI\Fi
 C:\Users\darren.a.doyle\Project\fifa-finder-application\Backend\FifaFinderAPI\FifaFinderAPI\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
 C:\Users\darren.a.doyle\Project\fifa-finder-application\Backend\FifaFinderAPI\FifaFinderAPI\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
 C:\Users\darren.a.doyle\Project\fifa-finder-application\Backend\FifaFinderAPI\FifaFinderAPI\obj\Debug\netcoreapp3.1\FifaFinderAPI.csproj.CopyComplete
+C:\Users\darren.a.doyle\Project\fifa-finder-application\Backend\FifaFinderAPI\FifaFinderAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\darren.a.doyle\Project\fifa-finder-application\Backend\FifaFinderAPI\FifaFinderAPI\bin\Debug\netcoreapp3.1\appsettings.json
