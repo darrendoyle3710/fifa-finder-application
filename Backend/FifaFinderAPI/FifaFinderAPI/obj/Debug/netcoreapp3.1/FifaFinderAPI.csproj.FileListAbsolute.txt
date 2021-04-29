@@ -1,5 +1,3 @@
-C:\Users\darren.a.doyle\Project\fifa-finder-application\Backend\FifaFinderAPI\FifaFinderAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
-C:\Users\darren.a.doyle\Project\fifa-finder-application\Backend\FifaFinderAPI\FifaFinderAPI\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\darren.a.doyle\Project\fifa-finder-application\Backend\FifaFinderAPI\FifaFinderAPI\bin\Debug\netcoreapp3.1\FifaFinderAPI.exe
 C:\Users\darren.a.doyle\Project\fifa-finder-application\Backend\FifaFinderAPI\FifaFinderAPI\bin\Debug\netcoreapp3.1\FifaFinderAPI.deps.json
 C:\Users\darren.a.doyle\Project\fifa-finder-application\Backend\FifaFinderAPI\FifaFinderAPI\bin\Debug\netcoreapp3.1\FifaFinderAPI.runtimeconfig.json
