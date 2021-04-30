@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FifaFinderAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210429152155_InitDB")]
-    partial class InitDB
+    [Migration("20210430131152_FifaInitDB")]
+    partial class FifaInitDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,17 +31,17 @@ namespace FifaFinderAPI.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("Platform")
-                        .HasColumnType("int");
+                    b.Property<string>("Platform")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("PlayerRating")
                         .HasColumnType("int");
 
-                    b.Property<int>("Position")
-                        .HasColumnType("int");
+                    b.Property<string>("Position")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("PostType")
-                        .HasColumnType("int");
+                    b.Property<string>("Type")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("ID");
 

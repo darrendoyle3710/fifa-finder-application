@@ -1,29 +1,46 @@
-<div class="form-froup row" style="width: 60%;">
+<div style="width: 60%;">
+    <form>
+        <div>
+            <label>Type</label>
+            <select class="form-control" [(ngModel)]="Type">
+                <option *ngFor="let type of postTypes" [ngValue]="type">{{type}}</option>
+            </select>
+        </div>
+        <div>
+            <label>Platform</label>
+            <select class="form-control" [(ngModel)]="Platform">
+                <option *ngFor="let platform of platforms" [ngValue]="platform">{{platform}}</option>
+            </select>
+        </div>
+        <div>
+            <label>Position</label>
+            <select class="form-control" [(ngModel)]="Position">
+                <option *ngFor="let position of positions" [ngValue]="position">{{position}}</option>
+            </select>
+        </div>
+        <div>
+            <label>Player Rating</label>
+            <select class="form-control" [(ngModel)]="PlayerRating">
+                <option *ngFor="let rating of playerRatings" [ngValue]="rating">{{rating}}</option>
+            </select>
+        </div>
+        <div>
+            <label>Description</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" [(ngModel)]="Description" placeholder="Description">
+            </div>
+        </div>
+        <button (click)="addPost()" class="btn btn-primary">
+            Add
+        </button>
+    </form>
+</div>
 
-    <label class="col-sm-2 col-form-label">Type</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" [(ngModel)]="Type" placeholder="Enter Name">
-    </div>
-    <label class="col-sm-2 col-form-label">Platform</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" [(ngModel)]="Platform" placeholder="Enter Age">
-    </div>
-    <label class="col-sm-2 col-form-label">Position</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" [(ngModel)]="Position" placeholder="Enter Name">
-    </div>
-    <label class="col-sm-2 col-form-label">Player Rating</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" [(ngModel)]="PlayerRating" placeholder="Enter Name">
-    </div>
-    <label class="col-sm-2 col-form-label">Description</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" [(ngModel)]="Description" placeholder="Enter Name">
-    </div>
-
-    <button (click)="addPost()" class="btn btn-primary">
-        Add
-    </button>
+<div style="padding-top: 20px; width: 30%;">
+    <form class="d-flex">
+        <input class="form-control" style="margin-right: 10px;" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
 </div>
 
 <table class="table table-striped">

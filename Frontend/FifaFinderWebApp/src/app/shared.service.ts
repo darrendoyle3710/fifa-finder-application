@@ -19,4 +19,11 @@ export class SharedService {
     return this.http.post(this.APIUrl + '/post', val);
   }
 
+  deletePost(val: any) {
+    return this.http.delete(this.APIUrl + '/post/' + val);
+  }
+
+  updatePost(val: any) {
+    return this.http.put(this.APIUrl + '/post', val);
+  }
 }

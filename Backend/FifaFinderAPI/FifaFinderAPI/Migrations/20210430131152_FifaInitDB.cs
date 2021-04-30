@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FifaFinderAPI.Migrations
 {
-    public partial class InitDB : Migration
+    public partial class FifaInitDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,9 +14,9 @@ namespace FifaFinderAPI.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    PostType = table.Column<int>(type: "int", nullable: false),
-                    Platform = table.Column<int>(type: "int", nullable: false),
-                    Position = table.Column<int>(type: "int", nullable: false),
+                    Type = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    Platform = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    Position = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
                     PlayerRating = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     Description = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true)

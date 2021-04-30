@@ -8,17 +8,17 @@ namespace FifaFinderAPI.Models
     public class Post
     {
         public int ID { get; set; }
-        public Type Type { get; set; }
-        public Platform Platform { get; set; }
-        public Position Position { get; set; }
-        public PlayerRating PlayerRating { get; set; }
+        public string Type { get; set; }
+        public string Platform { get; set; }
+        public string Position { get; set; }
+        public int PlayerRating { get; set; }
         public DateTime CreatedAt { get; set; }
         public string Description { get; set; }
 
         public Post() { }
-        public Post(Type pt, Platform pl, Position pos, PlayerRating prtg, string desc)
+        public Post(string ty, string pl, string pos, int prtg, string desc)
         {
-            Type = pt;
+            Type = ty;
             Platform = pl;
             Position = pos;
             PlayerRating = prtg;
