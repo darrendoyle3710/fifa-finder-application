@@ -22,6 +22,7 @@ namespace FifaFinderAPI.Controllers
         public JsonResult Get()
         {
             var allPosts = dbContext.Posts;
+
             return new JsonResult(allPosts);
         }
 
@@ -31,7 +32,33 @@ namespace FifaFinderAPI.Controllers
             var postToInsert = new Post(post.Type, post.Platform, post.Position, post.PlayerRating, post.Description);
             dbContext.Posts.Add(postToInsert);
             dbContext.SaveChanges();
+
             return new JsonResult("Post Created!");
         }
+
+        [HttpDelete("{id}")]
+        public JsonResult Delete(int id)
+        {
+            var postToDelete = dbContext.Posts.FirstOrDefault(p => p.ID == id);
+            dbContext.Posts.Remove(postToDelete);
+            dbContext.SaveChanges();
+
+            return new JsonResult("Deleted Successfully!");
+        }
+
+        [HttpPut]
+        public JsonResult Put(Post post)
+        {
+            var postToUpdate = dbContext.Posts.FirstOrDefault(p => p.ID == post.ID);
+            postToUpdate.Type = post.Type;
+            postToUpdate.Platform = post.Platform;
+            postToUpdate.Position = post.Position;
+            postToUpdate.PlayerRating = post.PlayerRating;
+            postToUpdate.Description = post.Description;
+            dbContext.SaveChanges();
+
+            return new JsonResult("Updated Successfully!");
+        }
+
     }
 }
