@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
+import { PostData } from 'src/app/post/post-data';
 
 @Component({
   selector: 'app-post-operations',
@@ -15,13 +16,13 @@ export class PostOperationsComponent implements OnInit {
   Type: string;
   Platform: string;
   Position: string;
-  PlayerRating: number;
+  PlayerRating: string;
   Description: string;
 
-  postTypes: string[] = ['Looking For Club', 'Looking For Player'];
-  platforms: string[] = ['PS5', 'Xbox Series X', 'PC', 'Xbox One', 'PS4'];
-  positions: string[] = ['GK', 'RB', 'LB', 'CB', 'CDM', 'CM', 'CAM', 'LM', 'RM', 'RW', 'LW', 'RF', 'LF', 'ST'];
-  playerRatings: number[] = [80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92];
+  postTypes: string[] = PostData.postTypes;
+  platforms: string[] = PostData.platforms;
+  positions: string[] = PostData.positions;
+  playerRatings: string[] = PostData.playerRatings;
 
   ngOnInit(): void { }
 

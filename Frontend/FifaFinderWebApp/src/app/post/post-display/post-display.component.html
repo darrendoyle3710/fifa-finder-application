@@ -20,17 +20,32 @@
     <thead>
         <tr>
             <th>
-                Post
+                <select class="form-control" [(ngModel)]="TypeFilter" (ngModelChange)="FilterPosts()">
+                    <option selected="selected" value="">Any</option>
+                    <option *ngFor="let type of postTypes" [ngValue]="type">{{type}}</option>
+                </select>
             </th>
             <th>
-                <input [(ngModel)]="PostTypeFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
+                <select class="form-control" [(ngModel)]="PlatformFilter" (ngModelChange)="FilterPosts()">
+                    <option selected="selected" value="">Any</option>
+                    <option *ngFor="let platform of platforms" [ngValue]="platform">{{platform}}</option>
+                </select>
+            </th>
+            <th>
+                <select class="form-control" [(ngModel)]="PositionFilter" (ngModelChange)="FilterPosts()">
+                    <option selected="selected" value="">Any</option>
+                    <option *ngFor="let position of positions" [ngValue]="position">{{position}}</option>
+                </select>
+            </th>
+
+            <th>
+                <!-- <input [(ngModel)]="PostFilter" class="form-control" (keyup)="FilterPosts()" placeholder="Filter"> -->
             </th>
             <th>
                 <button type="button" class="btn btn-primary float-right m-2" data-toggle="modal"
                     data-target="#exampleModal" (click)="addClick()" data-backdrop="static" data-keyboard="false">Add
                     Post</button>
             </th>
-
     </thead>
     <tbody>
         <tr *ngFor="let dataItem of PostList">

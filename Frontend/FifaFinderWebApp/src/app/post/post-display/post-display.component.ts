@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
+import { PostData } from 'src/app/post/post-data';
 
 @Component({
   selector: 'app-post-display',
@@ -11,15 +12,21 @@ export class PostDisplayComponent implements OnInit {
   constructor(private service: SharedService) { }
 
   PostList: any = [];
-
-  PostTypeFilter: string = "";
-  PostPlatformFilter: string = "";
-  PostPositionFilter: string = "";
   PostListUnfiltered: any = [];
+
+  TypeFilter: string = "";
+  PlatformFilter: string = "";
+  PositionFilter: string = "";
+  PlayerRatingFilter: string = "";
 
   ModalTitle: string;
   ShowPostOperations: boolean = false;
   post: any;
+
+  postTypes: string[] = PostData.postTypes;
+  platforms: string[] = PostData.platforms;
+  positions: string[] = PostData.positions;
+  playerRatings: string[] = PostData.playerRatings;
 
   ngOnInit(): void {
     this.refreshPostList();
@@ -38,7 +45,7 @@ export class PostDisplayComponent implements OnInit {
       Type: "",
       Platform: "",
       Position: "",
-      PlayerRating: 80,
+      PlayerRating: "",
       Description: "",
     }
     this.ModalTitle = "Add Post";
@@ -67,13 +74,22 @@ export class PostDisplayComponent implements OnInit {
     }
   }
 
-  FilterFn() {
-    var PostTypeFilter = this.PostTypeFilter;
-
+  FilterPosts() {
+    var TypeFilter = this.TypeFilter;
+    var PlatformFilter = this.PlatformFilter;
+    var PositionFilter = this.PositionFilter;
+    var PlayerRatingFilter = this.PlayerRatingFilter;
+    console.log("testy");
     this.PostList = this.PostListUnfiltered.filter(function (el) {
-      return el.Type.toString().toLowerCase().includes(
-        PostTypeFilter.toString().trim().toLowerCase()
-      )
+      return el.Type.toLowerCase().includes(
+        TypeFilter.trim().toLowerCase()
+      ) &&
+        el.Platform.toLowerCase().includes(
+          PlatformFilter.trim().toLowerCase()
+        ) &&
+        el.Position.toLowerCase().includes(
+          PositionFilter.trim().toLowerCase()
+        )
     });
   }
 
