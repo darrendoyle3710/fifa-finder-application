@@ -12,6 +12,11 @@ export class PostDisplayComponent implements OnInit {
 
   PostList: any = [];
 
+  PostTypeFilter: string = "";
+  PostPlatformFilter: string = "";
+  PostPositionFilter: string = "";
+  PostListUnfiltered: any = [];
+
   ModalTitle: string;
   ShowPostOperations: boolean = false;
   post: any;
@@ -23,6 +28,7 @@ export class PostDisplayComponent implements OnInit {
   refreshPostList() {
     this.service.getPostList().subscribe(data => {
       this.PostList = data;
+      this.PostListUnfiltered = data;
     });
   }
 
@@ -61,6 +67,14 @@ export class PostDisplayComponent implements OnInit {
     }
   }
 
+  FilterFn() {
+    var PostTypeFilter = this.PostTypeFilter;
 
+    this.PostList = this.PostListUnfiltered.filter(function (el) {
+      return el.Type.toString().toLowerCase().includes(
+        PostTypeFilter.toString().trim().toLowerCase()
+      )
+    });
+  }
 
 }

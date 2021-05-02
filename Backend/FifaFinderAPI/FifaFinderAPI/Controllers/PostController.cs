@@ -43,7 +43,7 @@ namespace FifaFinderAPI.Controllers
             dbContext.Posts.Remove(postToDelete);
             dbContext.SaveChanges();
 
-            return new JsonResult("Deleted Successfully!");
+            return new JsonResult("Post Deleted!");
         }
 
         [HttpPut]
@@ -57,7 +57,7 @@ namespace FifaFinderAPI.Controllers
             postToUpdate.Description = post.Description;
             dbContext.SaveChanges();
 
-            return new JsonResult("Updated Successfully!");
+            return new JsonResult("Post Updated!");
         }
 
     }
