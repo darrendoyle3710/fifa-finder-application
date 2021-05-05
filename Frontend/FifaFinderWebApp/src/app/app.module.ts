@@ -11,13 +11,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
+import { UserComponent } from './user/user.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostComponent,
     PostOperationsComponent,
-    PostDisplayComponent
+    PostDisplayComponent,
+    UserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

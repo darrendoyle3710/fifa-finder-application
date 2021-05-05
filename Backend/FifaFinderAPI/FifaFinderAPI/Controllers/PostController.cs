@@ -1,4 +1,5 @@
-﻿using FifaFinderAPI.Data;
+﻿using FifaFinderAPI.Binding;
+using FifaFinderAPI.Data;
 using FifaFinderAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -26,16 +27,26 @@ namespace FifaFinderAPI.Controllers
             return new JsonResult(allPosts);
         }
 
-        [HttpPost]
-        public JsonResult Post(Post post)
+        [HttpPost("{userID}")]
+        public JsonResult Post(AddPostBindingModel bindingModel, int userID)
         {
-            var postToInsert = new Post(post.Type, post.Platform, post.Position, post.PlayerRating, post.Description);
+            bindingModel.UserID = userID;
+            var postToInsert = new Post() {
+                Type = bindingModel.Type,
+                Platform = bindingModel.Platform,
+                Position = bindingModel.Position,
+                User = dbContext.Users.FirstOrDefault(u => u.ID == userID),
+                PlayerRating = bindingModel.PlayerRating,
+                Description = bindingModel.Description,
+                CreatedAt = DateTime.Now
+            };
+           
             dbContext.Posts.Add(postToInsert);
             dbContext.SaveChanges();
 
             return new JsonResult("Post Created!");
         }
-
+        
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {

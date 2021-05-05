@@ -18,6 +18,7 @@ export class PostOperationsComponent implements OnInit {
   Position: string;
   PlayerRating: string;
   Description: string;
+  UserID: number;
 
   postTypes: string[] = PostData.postTypes;
   platforms: string[] = PostData.platforms;
@@ -28,8 +29,9 @@ export class PostOperationsComponent implements OnInit {
 
 
   addPost() {
-    var val = { ID: this.ID, Type: this.Type, Platform: this.Platform, Position: this.Position, PlayerRating: this.PlayerRating, Description: this.Description };
-
+    this.UserID = 1;
+    var val = { ID: this.ID, Type: this.Type, Platform: this.Platform, Position: this.Position, PlayerRating: this.PlayerRating, Description: this.Description, UserID: this.UserID };
+    console.log(val);
     this.service.addPost(val).subscribe(response => {
       alert(response.toString());
     });

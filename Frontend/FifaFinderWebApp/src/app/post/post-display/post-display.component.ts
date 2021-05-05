@@ -17,7 +17,6 @@ export class PostDisplayComponent implements OnInit {
   TypeFilter: string = "";
   PlatformFilter: string = "";
   PositionFilter: string = "";
-  PlayerRatingFilter: string = "";
 
   ModalTitle: string;
   ShowPostOperations: boolean = false;
@@ -47,6 +46,7 @@ export class PostDisplayComponent implements OnInit {
       Position: "",
       PlayerRating: "",
       Description: "",
+      UserID: 0
     }
     this.ModalTitle = "Add Post";
     this.ShowPostOperations = true;
@@ -78,7 +78,7 @@ export class PostDisplayComponent implements OnInit {
     var TypeFilter = this.TypeFilter;
     var PlatformFilter = this.PlatformFilter;
     var PositionFilter = this.PositionFilter;
-    var PlayerRatingFilter = this.PlayerRatingFilter;
+
     console.log("testy");
     this.PostList = this.PostListUnfiltered.filter(function (el) {
       return el.Type.toLowerCase().includes(

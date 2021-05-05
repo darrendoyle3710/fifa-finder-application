@@ -11,12 +11,14 @@ namespace FifaFinderAPI.Models
         public string Type { get; set; }
         public string Platform { get; set; }
         public string Position { get; set; }
-        public int PlayerRating { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public string PlayerRating { get; set; }
         public string Description { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public virtual User User { get; set; }
+
 
         public Post() { }
-        public Post(string ty, string pl, string pos, int prtg, string desc)
+        public Post(string ty, string pl, string pos, string prtg, string desc)
         {
             Type = ty;
             Platform = pl;
