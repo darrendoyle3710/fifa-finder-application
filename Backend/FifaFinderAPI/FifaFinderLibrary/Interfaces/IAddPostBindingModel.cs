@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FifaFinderAPI.Library.Interfaces
 {
-    interface IAddPostBindingModel
+    public interface IAddPostBindingModel
     {
         public string Type { get; set; }
         public string Platform { get; set; }

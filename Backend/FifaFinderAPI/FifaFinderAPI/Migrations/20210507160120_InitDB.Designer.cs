@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FifaFinderAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210507123407_InitDB")]
+    [Migration("20210507160120_InitDB")]
     partial class InitDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

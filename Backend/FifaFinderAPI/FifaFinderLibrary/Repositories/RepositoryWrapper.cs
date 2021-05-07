@@ -6,7 +6,7 @@ using System.Text;
 
 namespace FifaFinderAPI.Library.Repositories
 {
-    class RepositoryWrapper : IRepositoryWrapper
+    public class RepositoryWrapper : IRepositoryWrapper
     {
         ApplicationDbContext _repoContext;
         public RepositoryWrapper(ApplicationDbContext repoContext)

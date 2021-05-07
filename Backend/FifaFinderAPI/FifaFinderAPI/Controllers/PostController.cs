@@ -1,7 +1,9 @@
 ﻿using FifaFinderAPI.Library.Binding;
 using FifaFinderAPI.Library.Data;
+using FifaFinderAPI.Library.Interfaces;
 using FifaFinderAPI.Library.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,21 +15,25 @@ namespace FifaFinderAPI.Controllers
     [Route("[controller]")]
     public class PostController : ControllerBase
     {
-        private readonly ApplicationDbContext dbContext;
-        public PostController(ApplicationDbContext applicationDbContext)
+        private ILogger<PostController> _logger;
+        private IRepositoryWrapper repository;
+        public PostController(ILogger<PostController> logger, IRepositoryWrapper repositoryWrapper)
         {
-            dbContext = applicationDbContext;
+            _logger = logger;
+            repository = repositoryWrapper;
         }
 
         // GET Request which returns the entire Post table
         [HttpGet]
         public JsonResult Get()
         {
-            var allPosts = dbContext.Posts;
+            var allPosts = repository.Posts.FindAll();
             if (allPosts != null)
             {
+                _logger.LogInformation("Posts returned");
                 return new JsonResult(allPosts);
             }
+            _logger.LogInformation("Posts not returned, null value");
             return new JsonResult("Table not found");
 
         }
@@ -36,20 +42,11 @@ namespace FifaFinderAPI.Controllers
         [HttpPost("{userID}")]
         public JsonResult Post(AddPostBindingModel bindingModel, int userID)
         {
-            bindingModel.UserID = userID;
-            var postToInsert = new Post() {
-                Type = bindingModel.Type,
-                Platform = bindingModel.Platform,
-                Position = bindingModel.Position,
-                User = dbContext.Users.FirstOrDefault(u => u.ID == userID),
-                PlayerRating = bindingModel.PlayerRating,
-                Description = bindingModel.Description,
-                CreatedAt = DateTime.Now
-            };
-           
-            dbContext.Posts.Add(postToInsert);
-            dbContext.SaveChanges();
+            var user = repository.Users.FindByCondition(u => u.ID == userID).FirstOrDefault();
+            var postToInsert = repository.Posts.Create(new Post { User = null, Type = bindingModel.Type, Platform = bindingModel.Platform, Position = bindingModel.Position, PlayerRating = bindingModel.PlayerRating, Description = bindingModel.Description, CreatedAt = DateTime.Now});
+            repository.Save();
 
+            _logger.LogInformation("Post created");
             return new JsonResult("Post Created!");
         }
 
@@ -57,10 +54,15 @@ namespace FifaFinderAPI.Controllers
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            var postToDelete = dbContext.Posts.FirstOrDefault(p => p.ID == id);
-            dbContext.Posts.Remove(postToDelete);
-            dbContext.SaveChanges();
-
+            var postToDelete = repository.Posts.FindByCondition(p => p.ID == id).FirstOrDefault();
+            if (postToDelete == null)
+            {
+                _logger.LogInformation("Post ID not found");
+                return new JsonResult("No user to delete");
+            }
+            repository.Posts.Delete(postToDelete);
+            repository.Save();
+            _logger.LogInformation("Deletion complete");
             return new JsonResult("Post Deleted!");
         }
 
@@ -68,14 +70,22 @@ namespace FifaFinderAPI.Controllers
         [HttpPut]
         public JsonResult Put(Post post)
         {
-            var postToUpdate = dbContext.Posts.FirstOrDefault(p => p.ID == post.ID);
+            var postToUpdate = repository.Posts.FindByCondition(p => p.ID == post.ID).FirstOrDefault();
+            if (postToUpdate == null)
+            {
+                _logger.LogInformation("Post ID not found");
+                return new JsonResult("No user to edit");
+            }
             postToUpdate.Type = post.Type;
             postToUpdate.Platform = post.Platform;
             postToUpdate.Position = post.Position;
             postToUpdate.PlayerRating = post.PlayerRating;
             postToUpdate.Description = post.Description;
-            dbContext.SaveChanges();
+            repository.Posts.Update(postToUpdate);
+            _logger.LogInformation($"About to save {postToUpdate.ID} with new position {postToUpdate.Position}");
+            repository.Save();
 
+            _logger.LogInformation("Post updated!");
             return new JsonResult("Post Updated!");
         }
 

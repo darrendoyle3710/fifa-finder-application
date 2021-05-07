@@ -2,7 +2,7 @@
 
 namespace FifaFinderAPI.Library.Interfaces
 {
-    interface IUser
+    public interface IUser
     {
         public int ID { get; set; }
         public string Username { get; set; }

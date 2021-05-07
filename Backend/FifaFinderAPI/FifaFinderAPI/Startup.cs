@@ -1,4 +1,6 @@
 using FifaFinderAPI.Library.Data;
+using FifaFinderAPI.Library.Interfaces;
+using FifaFinderAPI.Library.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -48,6 +50,7 @@ namespace FifaFinderAPI
             // lowercase controller urls
             services.AddRouting(r => r.LowercaseUrls = true);
             // db context config 
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
             services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(myConnectionString, ServerVersion.AutoDetect(myConnectionString), b => b.MigrationsAssembly("FifaFinderAPI")));
             services.AddControllers();
         }

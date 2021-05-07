@@ -2,7 +2,7 @@
 
 namespace FifaFinderAPI.Library.Interfaces
 {
-    interface IPost
+    public interface IPost
     {
         public int ID { get; set; }
         public string Type { get; set; }

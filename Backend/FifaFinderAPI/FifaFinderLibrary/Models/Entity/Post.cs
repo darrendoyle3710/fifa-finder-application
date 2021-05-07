@@ -20,14 +20,5 @@ namespace FifaFinderAPI.Library.Models
 
         public Post() { }
         // overloaded constructor for creating post objects
-        public Post(string ty, string pl, string pos, string prtg, string desc)
-        {
-            Type = ty;
-            Platform = pl;
-            Position = pos;
-            PlayerRating = prtg;
-            Description = desc;
-            CreatedAt = DateTime.Now;
-        }
     }
 }
