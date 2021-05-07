@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SharedService } from 'src/app/shared.service';
-import { PostData } from 'src/app/post/post-data';
+import { SharedService } from 'src/app/services/shared.service';
+import { PostData } from 'src/app/models/post-data';
 import { AuthService } from 'src/app/auth/auth.service';
 import { User } from 'src/app/models/user';
 

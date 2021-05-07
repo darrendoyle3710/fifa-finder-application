@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedService } from 'src/app/shared.service';
-import { PostData } from 'src/app/post/post-data';
+import { SharedService } from 'src/app/services/shared.service';
+import { PostData } from 'src/app/models/post-data';
 
 @Component({
   selector: 'app-post-display',

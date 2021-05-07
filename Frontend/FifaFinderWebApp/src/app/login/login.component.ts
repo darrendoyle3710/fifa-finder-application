@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { SharedService } from 'src/app/shared.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Router } from '@angular/router';
 
@@ -34,7 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   onRegister() {
-    var val = { ID: 0, Username: this.registerForm.value.username, Password: this.registerForm.value.password, Email: this.registerForm.value.email, PictureURL: "" };
+    var val = { ID: 0, Username: this.registerForm.value.username, Password: this.registerForm.value.password, Email: this.registerForm.value.email };
     console.log(val);
     this.service.registerUser(val).subscribe(response => {
       this.router.navigateByUrl('/posts');
@@ -43,7 +42,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    var val = { ID: 0, Username: this.loginForm.value.username, Password: this.loginForm.value.password, Email: "", PictureURL: "" };
+    var val = { ID: 0, Username: this.loginForm.value.username, Password: this.loginForm.value.password, Email: "" };
     console.log(val);
     this.service.loginUser(val).subscribe(response => {
       this.router.navigateByUrl('/posts');

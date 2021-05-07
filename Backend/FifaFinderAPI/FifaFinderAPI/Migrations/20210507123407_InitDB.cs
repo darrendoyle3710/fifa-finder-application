@@ -17,7 +17,6 @@ namespace FifaFinderAPI.Migrations
                     Username = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
                     Password = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
                     Email = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    PictureURL = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>

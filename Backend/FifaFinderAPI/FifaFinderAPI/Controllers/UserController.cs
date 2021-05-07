@@ -48,7 +48,7 @@ namespace FifaFinderAPI.Controllers
             }
 
             // Inserting the new user
-            var userToInsert = new User(user.Username, user.Password, user.Email, user.PictureURL);
+            var userToInsert = new User(user.Username, user.Password, user.Email);
             dbContext.Users.Add(userToInsert);
             dbContext.SaveChanges();
 

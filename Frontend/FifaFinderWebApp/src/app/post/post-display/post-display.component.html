@@ -16,30 +16,54 @@
     </div>
 </div>
 
+
+
 <table class="table table-striped">
     <thead>
         <tr>
             <th>
+                <label>Post Type</label>
                 <select class="form-control" [(ngModel)]="TypeFilter" (ngModelChange)="FilterPosts()">
                     <option selected="selected" value="">Any</option>
                     <option *ngFor="let type of postTypes" [ngValue]="type">{{type}}</option>
                 </select>
-            </th>
             <th>
+                <label>Platform</label>
                 <select class="form-control" [(ngModel)]="PlatformFilter" (ngModelChange)="FilterPosts()">
                     <option selected="selected" value="">Any</option>
                     <option *ngFor="let platform of platforms" [ngValue]="platform">{{platform}}</option>
                 </select>
             </th>
             <th>
+                <label>Position</label>
                 <select class="form-control" [(ngModel)]="PositionFilter" (ngModelChange)="FilterPosts()">
                     <option selected="selected" value="">Any</option>
                     <option *ngFor="let position of positions" [ngValue]="position">{{position}}</option>
                 </select>
             </th>
+        </tr>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Post Type
+            </th>
+            <th>
+                Platform
+            </th>
+            <th>
+                Position
+            </th>
 
             <th>
-                <!-- <input [(ngModel)]="PostFilter" class="form-control" (keyup)="FilterPosts()" placeholder="Filter"> -->
+                Player Rating
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Time Posted
             </th>
             <th>
                 <button type="button" class="btn btn-primary float-right m-2" data-toggle="modal"
@@ -49,19 +73,17 @@
     </thead>
     <tbody>
         <tr *ngFor="let dataItem of PostList">
-            <td>ID: {{dataItem.ID}}</td>
-            <td>post type: {{dataItem.Type}}</td>
-            <td>platform: {{dataItem.Platform}}</td>
-            <td>position: {{dataItem.Position}}</td>
-            <td>user ID: {{dataItem.UserID}}</td>
-            <td>player rating: {{dataItem.PlayerRating}}</td>
-            <td>description: {{dataItem.Description}}</td>
-            <td>created at: {{dataItem.CreatedAt}}</td>
+            <td>{{dataItem.ID}}</td>
+            <td>{{dataItem.Type}}</td>
+            <td>{{dataItem.Platform}}</td>
+            <td>{{dataItem.Position}}</td>
+            <td>{{dataItem.PlayerRating}}</td>
+            <td>{{dataItem.Description}}</td>
+            <td>{{dataItem.CreatedAt}}</td>
             <td>
                 <button type="button" class="btn btn-light mr-1" (click)="deletePostClick(dataItem)">Delete</button>
                 <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal"
                     (click)="editPostClick(dataItem)" data-backdrop="static" data-keyboard="false">Edit</button>
-                <button type="button" class="btn btn-light mr-1">Kick-Off</button>
             </td>
         </tr>
     </tbody>
