@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 import { PostData } from 'src/app/post/post-data';
+import { AuthService } from 'src/app/auth/auth.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-post-operations',
@@ -8,8 +10,10 @@ import { PostData } from 'src/app/post/post-data';
   styleUrls: ['./post-operations.component.css']
 })
 export class PostOperationsComponent implements OnInit {
-
-  constructor(private service: SharedService) { }
+  currentUser: User;
+  constructor(private service: SharedService, private authservice: AuthService) {
+    this.authservice.currentUser.subscribe(x => this.currentUser = x);
+  }
 
   @Input() post: any;
   ID: number;
@@ -29,8 +33,8 @@ export class PostOperationsComponent implements OnInit {
 
 
   addPost() {
-    this.UserID = 1;
-    var val = { ID: this.ID, Type: this.Type, Platform: this.Platform, Position: this.Position, PlayerRating: this.PlayerRating, Description: this.Description, UserID: this.UserID };
+
+    var val = { ID: this.ID, Type: this.Type, Platform: this.Platform, Position: this.Position, PlayerRating: this.PlayerRating, Description: this.Description, UserID: this.currentUser.ID };
     console.log(val);
     this.service.addPost(val).subscribe(response => {
       alert(response.toString());

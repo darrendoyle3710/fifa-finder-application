@@ -35,6 +35,7 @@ export class PostDisplayComponent implements OnInit {
     this.service.getPostList().subscribe(data => {
       this.PostList = data;
       this.PostListUnfiltered = data;
+      console.log(this.PostList);
     });
   }
 
@@ -57,7 +58,6 @@ export class PostDisplayComponent implements OnInit {
   }
 
   editPostClick(item) {
-    console.log(item);
     this.post = item;
     this.post
     this.ModalTitle = "Edit Post";

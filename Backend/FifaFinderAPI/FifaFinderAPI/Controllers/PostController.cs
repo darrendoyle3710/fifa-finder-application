@@ -1,6 +1,6 @@
-﻿using FifaFinderAPI.Binding;
-using FifaFinderAPI.Data;
-using FifaFinderAPI.Models;
+﻿using FifaFinderAPI.Library.Binding;
+using FifaFinderAPI.Library.Data;
+using FifaFinderAPI.Library.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -19,14 +19,20 @@ namespace FifaFinderAPI.Controllers
             dbContext = applicationDbContext;
         }
 
+        // GET Request which returns the entire Post table
         [HttpGet]
         public JsonResult Get()
         {
             var allPosts = dbContext.Posts;
+            if (allPosts != null)
+            {
+                return new JsonResult(allPosts);
+            }
+            return new JsonResult("Table not found");
 
-            return new JsonResult(allPosts);
         }
 
+        // POST Request which adds a record to the Post table on success, returning feedback of success 
         [HttpPost("{userID}")]
         public JsonResult Post(AddPostBindingModel bindingModel, int userID)
         {
@@ -46,7 +52,8 @@ namespace FifaFinderAPI.Controllers
 
             return new JsonResult("Post Created!");
         }
-        
+
+        // DELETE Request which deletes rthe record specified from the id parameter
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
@@ -57,6 +64,7 @@ namespace FifaFinderAPI.Controllers
             return new JsonResult("Post Deleted!");
         }
 
+        // PUT Request which edits an existing record with the passed in new details, returns feedback of success
         [HttpPut]
         public JsonResult Put(Post post)
         {

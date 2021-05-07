@@ -26,15 +26,34 @@ export class AuthService {
   }
 
   registerUser(val: any) {
-    return this.http.post(this.APIUrl + 'user' + '/' + 'register', val);
+    return this.http.post<any>(this.APIUrl + 'user' + '/' + 'register', val).pipe(map(user => {
+      // store user details and jwt token in local storage to keep user logged in between page refreshes
+      if (typeof user == "string") {
+        console.log(user);
+        alert(user);
+        return user;
+      } else {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUserSubject.next(user);
+        return user;
+      }
+
+    }));
   }
 
   loginUser(val: any) {
     return this.http.post<any>(this.APIUrl + 'user' + '/' + 'login', val).pipe(map(user => {
       // store user details and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      this.currentUserSubject.next(user);
-      return user;
+      if (typeof user == "string") {
+        console.log(user);
+        alert(user);
+        return user;
+      } else {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUserSubject.next(user);
+        return user;
+      }
+
     }));
   }
 

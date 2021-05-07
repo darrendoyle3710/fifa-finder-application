@@ -1,4 +1,4 @@
-using FifaFinderAPI.Data;
+using FifaFinderAPI.Library.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,14 +28,14 @@ namespace FifaFinderAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //Enable CORS
+            //Enable CORS Policy
             services.AddCors(c =>
             {
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod()
                  .AllowAnyHeader());
             });
 
-            //JSON Serializer
+            //JSON Serialization
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft
@@ -43,15 +43,19 @@ namespace FifaFinderAPI
                 .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver
                 = new DefaultContractResolver());
 
+            // DB connection string
             var myConnectionString = Configuration.GetConnectionString("DefaultConnection");
+            // lowercase controller urls
             services.AddRouting(r => r.LowercaseUrls = true);
-            services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(myConnectionString, ServerVersion.AutoDetect(myConnectionString)));
+            // db context config 
+            services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(myConnectionString, ServerVersion.AutoDetect(myConnectionString), b => b.MigrationsAssembly("FifaFinderAPI")));
             services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // getting the application use CORS policy configuration
             app.UseCors(x => x
             .AllowAnyOrigin()
             .AllowAnyMethod()

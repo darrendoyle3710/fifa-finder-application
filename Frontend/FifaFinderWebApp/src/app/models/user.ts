@@ -4,5 +4,4 @@ export class User {
     Password: string;
     Email: string;
     PictureURL: string;
-    token?: string;
 }

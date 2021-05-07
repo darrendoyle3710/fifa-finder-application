@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { SharedService } from 'src/app/shared.service';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Router } from '@angular/router';
 
 
 
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   public loginDisplay: boolean = false;
 
-  constructor(private service: AuthService) { }
+  constructor(private service: AuthService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
     var val = { ID: 0, Username: this.registerForm.value.username, Password: this.registerForm.value.password, Email: this.registerForm.value.email, PictureURL: "" };
     console.log(val);
     this.service.registerUser(val).subscribe(response => {
-      alert(response.toString());
+      this.router.navigateByUrl('/posts');
     });
 
   }
@@ -45,8 +46,7 @@ export class LoginComponent implements OnInit {
     var val = { ID: 0, Username: this.loginForm.value.username, Password: this.loginForm.value.password, Email: "", PictureURL: "" };
     console.log(val);
     this.service.loginUser(val).subscribe(response => {
-      alert(response.toString());
-
+      this.router.navigateByUrl('/posts');
     });
 
   }

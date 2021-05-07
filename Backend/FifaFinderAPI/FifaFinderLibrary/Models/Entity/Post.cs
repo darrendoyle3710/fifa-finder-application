@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FifaFinderAPI.Models
+namespace FifaFinderAPI.Library.Models
 {
     public class Post
     {
@@ -14,10 +14,12 @@ namespace FifaFinderAPI.Models
         public string PlayerRating { get; set; }
         public string Description { get; set; }
         public DateTime CreatedAt { get; set; }
+        // Foreign Key Reference to User 
         public virtual User User { get; set; }
 
 
         public Post() { }
+        // overloaded constructor for creating post objects
         public Post(string ty, string pl, string pos, string prtg, string desc)
         {
             Type = ty;

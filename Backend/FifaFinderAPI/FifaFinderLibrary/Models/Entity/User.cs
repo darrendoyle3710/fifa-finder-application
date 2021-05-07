@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FifaFinderAPI.Models
+namespace FifaFinderAPI.Library.Models
 {
     public class User
     {
@@ -13,9 +13,11 @@ namespace FifaFinderAPI.Models
         public string Email { get; set; }
         public string PictureURL { get; set; }
         public DateTime CreatedAt { get; set; }
+        // user contains a list of post objects, can have many or no posts in relation to DB
         public virtual List<Post> Posts { get; set; }
 
         public User() { }
+        // overloaded constructor for creating user objects
         public User(string usn, string pswd, string ema, string url)
         {
             Username = usn;
