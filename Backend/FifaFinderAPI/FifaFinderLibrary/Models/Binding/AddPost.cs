@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace FifaFinderAPI.Library.Binding
 {
-    public class AddPostBindingModel
+    public class AddPost
     {
         public string Type { get; set; }
         public string Platform { get; set; }

@@ -40,10 +40,10 @@ namespace FifaFinderAPI.Controllers
 
         // POST Request which adds a record to the Post table on success, returning feedback of success 
         [HttpPost("{userID}")]
-        public JsonResult Post(AddPostBindingModel bindingModel, int userID)
+        public JsonResult Post(AddPost addPostModel, int userID)
         {
             var user = repository.Users.FindByCondition(u => u.ID == userID).FirstOrDefault();
-            var postToInsert = repository.Posts.Create(new Post { User = null, Type = bindingModel.Type, Platform = bindingModel.Platform, Position = bindingModel.Position, PlayerRating = bindingModel.PlayerRating, Description = bindingModel.Description, CreatedAt = DateTime.Now});
+            var postToInsert = repository.Posts.Create(new Post { User = null, Type = addPostModel.Type, Platform = addPostModel.Platform, Position = addPostModel.Position, PlayerRating = addPostModel.PlayerRating, Description = addPostModel.Description, CreatedAt = DateTime.Now});
             repository.Save();
 
             _logger.LogInformation("Post created");

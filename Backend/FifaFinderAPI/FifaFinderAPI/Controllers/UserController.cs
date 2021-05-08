@@ -1,6 +1,7 @@
 ﻿using FifaFinderAPI.Library.Data;
 using FifaFinderAPI.Library.Interfaces;
 using FifaFinderAPI.Library.Models;
+using FifaFinderAPI.Library.Models.Binding;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -39,7 +40,7 @@ namespace FifaFinderAPI.Controllers
         // POST Request which verifies credentials are acceptable and adds them to the User table on success, returning the newly created record details
         [HttpPost]
         [Route("register")]
-        public JsonResult RegisterUser(User user)
+        public JsonResult RegisterUser(RegisterUser user)
         {
             var queryEmailRegistered = repository.Users.FindByCondition(u => u.Email == user.Email).FirstOrDefault();
             var queryUsernameRegistered = repository.Users.FindByCondition(u => u.Username == user.Username).FirstOrDefault();
@@ -71,7 +72,7 @@ namespace FifaFinderAPI.Controllers
         // POST Request which attempts to log the user in returns the user record
         [HttpPost]
         [Route("login")]
-        public JsonResult LoginUser(User user)
+        public JsonResult LoginUser(LoginUser user)
         {
             // checking for a matching username and password
             var queryLoginAttempt = repository.Users.FindByCondition(u => u.Username == user.Username && u.Password == user.Password).FirstOrDefault();
