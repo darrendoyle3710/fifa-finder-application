@@ -26,7 +26,8 @@ The conception of this project involved setting up a clear structure of requirem
 In the four quadrants above, each represents one the prioritisation categories, the **Must Have** section is the most important because it represents requirements which must be met in order to obtain a minimum viable product. The next step is representing the project requirements in a more development-digestible format using a **Kanban board**; the requirements will be broken down through **Epics, Stories and Tasks.**
 ## Analysis ##
 The next phase of the project requires stringent risk analysis to decide on protocols in typical scenarios that may arise during the development life cycle. I created a **Risk Assessment Matrix** to represent and evaluate risks involved in the project going forward. These risks are assessed under the following headings: **Evaluation, Likelihood, Impact, Responsibility, Response and Control Measure.**
-
+### Risk Assessment###
+These risks were formulated based on the tachnology stack required for the project and analysing what could go wrong in their interactions, there is a clear pattern of how these risks arise and what the approach to them will be.
 #### Risk Assessment Matrix ####
 |   Risk          | Evaluation | Likelihood| Impact  | Responsibility   |Response   | Control Measure  |
 |:-------|:------|:---    |:---    |:-------|:------|:-----  |
@@ -39,6 +40,8 @@ The next phase of the project requires stringent risk analysis to decide on prot
 | Not delivering requirements on schedule    | Application wont meet minimum viable prodcut scope  |    Medium    | High | Developer  | Ammend scheduled project delivery time   | Stick to minimum viable product scope as a first priority |
 
 ### User Stories ###
+[My Jira Story Board](https://darrendoyle.atlassian.net/jira/software/projects/FFP/boards/3 "Named link title")
+
 tidy jira and screenshot + link
 
 ## Design ##
