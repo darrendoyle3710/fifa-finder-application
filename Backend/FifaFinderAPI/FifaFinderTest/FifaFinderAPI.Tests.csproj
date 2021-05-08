@@ -25,8 +25,4 @@
     <ProjectReference Include="..\FifaFinderAPI\FifaFinderAPI.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="TestResults\" />
-  </ItemGroup>
-
 </Project>
