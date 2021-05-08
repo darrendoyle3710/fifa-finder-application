@@ -53,9 +53,21 @@ namespace FifaFinderTest
             // arrange
             mockRepo.Setup(repo => repo.Users.FindAll()).Returns(GetUsers());
             // act 
-            var controllerActionResult = userController.GetUsers();
+            var controllerJsonResult = userController.GetUsers();
             // assert
-            Assert.NotNull(controllerActionResult);
+            Assert.NotNull(controllerJsonResult);
+            Assert.IsType<JsonResult>(controllerJsonResult);
+        }
+        [Fact]
+        public void GetEmptyUsers_Test()
+        {
+            // arrange
+            mockRepo.Setup(repo => repo.Users.FindAll()).Returns(GetEmptyUsers());
+            // act 
+            var controllerJsonResult = userController.GetUsers();
+            // assert
+            Assert.NotNull(controllerJsonResult);
+            Assert.IsType<JsonResult>(controllerJsonResult);
         }
         [Fact]
         public void LoginUser_Test()
@@ -63,11 +75,30 @@ namespace FifaFinderTest
             // arrange
             mockRepo.Setup(repo => repo.Users.FindByCondition(u => u.ID == It.IsAny<int>())).Returns(GetUsers());
             LoginUser potentialUser = new LoginUser() { Username = "BarryBoy", Password = "password" };
+            LoginUser badpasswordUser = new LoginUser() { Username = "JoeBloggs", Password = "wrongpassword" };
+            LoginUser correctUser = new LoginUser() { Username = "SallyBobert", Password = "password" };
             // act 
             var controllerJsonResult = userController.LoginUser(potentialUser);
+            var passwordControllerJsonResult = userController.LoginUser(badpasswordUser);
+            var correctControllerJsonResult = userController.LoginUser(correctUser);
             // assert
             Assert.NotNull(controllerJsonResult);
             Assert.IsType<JsonResult>(controllerJsonResult);
+            Assert.NotNull(passwordControllerJsonResult);
+            Assert.IsType<JsonResult>(passwordControllerJsonResult);
+            Assert.NotNull(correctControllerJsonResult);
+            Assert.IsType<JsonResult>(correctControllerJsonResult);
+        }
+        public void LoginUser1_Test()
+        {
+            // arrange
+            mockRepo.Setup(repo => repo.Users.FindByCondition(u => u.ID == It.IsAny<int>())).Returns(GetUsers());
+            LoginUser correctUser = new LoginUser() { Username = "SallyBobert", Password = "password" };
+            // act 
+            var correctControllerJsonResult = userController.LoginUser(correctUser);
+            // assert
+            Assert.NotNull(correctControllerJsonResult);
+            Assert.IsType<JsonResult>(correctControllerJsonResult);
         }
         [Fact]
         public void RegisterUser_Test()
@@ -75,11 +106,15 @@ namespace FifaFinderTest
             // arrange
             mockRepo.Setup(repo => repo.Users.FindByCondition(u => u.ID == It.IsAny<int>())).Returns(GetUsers());
             RegisterUser potentialUser = new RegisterUser() { Username = "BarryBoy", Email = "barryboy@gmail.com", Password = "password" };
+            RegisterUser potentialTakenUser = new RegisterUser() ;
             // act 
             var controllerJsonResult = userController.RegisterUser(potentialUser);
+            var controllerTakenJsonResult = userController.RegisterUser(potentialTakenUser);
             // assert
             Assert.NotNull(controllerJsonResult);
             Assert.IsType<JsonResult>(controllerJsonResult);
+            Assert.NotNull(controllerTakenJsonResult);
+            Assert.IsType<JsonResult>(controllerTakenJsonResult);
         }
         [Fact]
         public void DeleteUser_Test()
@@ -91,6 +126,7 @@ namespace FifaFinderTest
             var controllerJsonResult = userController.DeleteUser(It.IsAny<int>());
             // assert
             Assert.NotNull(controllerJsonResult);
+            Assert.IsType<JsonResult>(controllerJsonResult);
         }
 
 
@@ -101,6 +137,11 @@ namespace FifaFinderTest
             new User(){ID = 2, Username = "SallyBobert", Email = "sallybobert@gmail.com", Password="password", CreatedAt = DateTime.Now}
             };
             return users;
+        }
+        private IEnumerable<User> GetEmptyUsers()
+        {
+           
+            return null;
         }
         private User GetUser()
         {

@@ -2,6 +2,7 @@
 using FifaFinderAPI.Library.Data;
 using FifaFinderAPI.Library.Interfaces;
 using FifaFinderAPI.Library.Models;
+using FifaFinderAPI.Library.Models.Binding;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -25,7 +26,7 @@ namespace FifaFinderAPI.Controllers
 
         // GET Request which returns the entire Post table
         [HttpGet]
-        public JsonResult Get()
+        public JsonResult GetPosts()
         {
             var allPosts = repository.Posts.FindAll();
             if (allPosts != null)
@@ -40,7 +41,7 @@ namespace FifaFinderAPI.Controllers
 
         // POST Request which adds a record to the Post table on success, returning feedback of success 
         [HttpPost("{userID}")]
-        public JsonResult Post(AddPost addPostModel, int userID)
+        public JsonResult AddPost(AddPost addPostModel, int userID)
         {
             var user = repository.Users.FindByCondition(u => u.ID == userID).FirstOrDefault();
             var postToInsert = repository.Posts.Create(new Post { User = null, Type = addPostModel.Type, Platform = addPostModel.Platform, Position = addPostModel.Position, PlayerRating = addPostModel.PlayerRating, Description = addPostModel.Description, CreatedAt = DateTime.Now});
@@ -52,7 +53,7 @@ namespace FifaFinderAPI.Controllers
 
         // DELETE Request which deletes rthe record specified from the id parameter
         [HttpDelete("{id}")]
-        public JsonResult Delete(int id)
+        public JsonResult DeletePost(int id)
         {
             var postToDelete = repository.Posts.FindByCondition(p => p.ID == id).FirstOrDefault();
             if (postToDelete == null)
@@ -68,7 +69,7 @@ namespace FifaFinderAPI.Controllers
 
         // PUT Request which edits an existing record with the passed in new details, returns feedback of success
         [HttpPut]
-        public JsonResult Put(Post post)
+        public JsonResult UpdatePost(EditPost post)
         {
             var postToUpdate = repository.Posts.FindByCondition(p => p.ID == post.ID).FirstOrDefault();
             if (postToUpdate == null)
