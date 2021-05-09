@@ -39,7 +39,7 @@ The next phase of the project requires stringent risk analysis to decide on prot
 
 
 ### Risk Assessment ###
-These risks were formulated based on the tachnology stack required for the project and analysing what could go wrong in their interactions, there is a clear pattern of how these risks arise and what the approach to them will be.
+These risks were formulated based on the technology stack required for the project and analysing what could go wrong in their interactions, there is a clear pattern of how these risks arise and what the approach to them will be.
 
 
 #### Risk Assessment Matrix ####
