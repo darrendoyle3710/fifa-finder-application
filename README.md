@@ -84,9 +84,11 @@ The post controller works similarly, providing add,delete and update methods whi
 ## Testing ##
 Extensive Unit testing was conducted on both controllers, ensuring operations were not returning incorrect types or null values. The controllers followed repository pattern best practices in order to provide a layer of encapsulation to the database. Code coverage was extensive on both controllers, I did not have view models in my project which might bring my percentage of coverage down (based on the coverage.json file).
 ![testing coverage](Images/finalcoverage.PNG)
-## Deployment ##
-lorem ipsum
+## CI/CD Pipeline & Deployment ##
+The application was deployed with Azure DevOps using Azure pipelines. This set up allows for continuous deployment and integration of application builds while staying live in deployment. The application itself is being hosted on azure app service, with a virtual machine acting as a build agent. Below we can see the successful pipleline build of the application and subequent deployment to the app server.
+![Backend](Images/backenddeploy.PNG)
 ## What To Improve ## 
 * The repository pattern was implemented too late and made project timing difficult, this had a knock on effect to other areas of the application.
 * Based on the last step, there were issues parsing the user object back to the frontend, despite my best efforts using a data bind model to return the user ID for posts.
+* Issues with deployment of the separate applications.
 
