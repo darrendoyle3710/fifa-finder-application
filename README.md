@@ -83,7 +83,7 @@ The user controller is handling all operations related to the user table, there 
 The post controller works similarly, providing add,delete and update methods which are returned to the frontend.
 ## Testing ##
 Extensive Unit testing was conducted on both controllers, ensuring operations were not returning incorrect types or null values. The controllers followed repository pattern best practices in order to provide a layer of encapsulation to the database. Code coverage was extensive on both controllers, I did not have view models in my project which might bring my percentage of coverage down (based on the coverage.json file).
-![testing coverage](Images/Final Cover.PNG)
+![testing coverage](Images/finalcoverage.PNG)
 ## Deployment ##
 lorem ipsum
 ## What To Improve ## 
