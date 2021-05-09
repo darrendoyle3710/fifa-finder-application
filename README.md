@@ -57,7 +57,9 @@ Using Jira, the project requirements were tracked continuosly using a kanban boa
 * CI Server: Azure DevOps
 * Cloud server: Azure App Service
 
-![Application](Images/Application.PNG)
+![Application](Images/Application.png)
+
+This diagram give a general understanding of the development process for the application. The frontend and backend are developed on separate IDEs and pushed to a github repository. This repository can be accessed from the devops environment where automated scripts can be ran and tested constinuously through Pipelines. The app service will host the application. 
 
 ### Database Structure ###
 ![ERD](ERD.PNG)
