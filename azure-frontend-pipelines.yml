@@ -1,0 +1,53 @@
+trigger:
+- master
+
+stages:
+  - stage:
+    displayName: Build
+    jobs:
+      - job:
+        pool:
+          name: my-new-pool
+        steps:
+        - task: NodeTool@0
+          inputs:
+            versionSpec: '10.x'
+          displayName: 'Install Node.js'
+
+        - script: |
+            npm install -g @angular/cli
+            npm install
+            ng build --prod
+          displayName: 'npm install and build'
+        - task: CopyFiles@2
+          displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+          inputs:
+            SourceFolder: '$(System.DefaultWorkingDirectory)/dist'
+            TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+        - task: PublishBuildArtifacts@1
+          displayName: "Publish Artifact"
+          inputs:
+            ArtifactName: drop
+
+  - stage:
+    displayName: Deploy
+    jobs:
+      - job:
+        pool:
+          name: my-new-pool
+        steps:
+          - task: DownloadBuildArtifacts@0
+            inputs:
+              buildType: 'current'
+              downloadType: 'specific'
+              artifactName: 'drop'
+              downloadPath: '$(System.ArtifactsDirectory)'           
+          - task: Bash@3
+            inputs:
+              targetType: 'inline'
+              script: |
+                sudo apt install nginx -y
+                sudo mv nginx.conf /etc/nginx/nginx.conf
+                sudo mv  $(System.ArtifactsDirectory)/drop/hello-world/* /usr/share/nginx/html
+                sudo systemctl restart nginx
