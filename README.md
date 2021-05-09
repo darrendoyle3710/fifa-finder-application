@@ -56,13 +56,16 @@ Using Jira, the project requirements were tracked continuosly using a kanban boa
 * Version Control: Git
 * CI Server: Azure DevOps
 * Cloud server: Azure App Service
-* 
+
+![Application](Images/Application.PNG)
+
 ### Database Structure ###
 ![ERD](ERD.PNG)
 There are two database tables which are Users and Posts. Users is the entity which represents a user on the system, they have a user account which permits them to create Posts. This relationship between the tables is a **One and Only One To Zero Or Many**, a user can none or many posts, while a post only belongs to a single User record if it exists. This establishes a UserID foreign key in the Posts table which establishes the link. Users will be able to use CRUD functionality on the post table through the applciation built on this database.
 
 ## Frontend ##
 The frontend was designed using an Angular framework form javascript, this was stretch goal which was I felt was necessary to consolidate my learning. In the frontend I tried to showcase as much as I learned in training with the Ng module, Component-Orientated project structure, Directives and Observables.
+
 ### Login Portal ###
 ![Login Screen](Images/login.PNG)
 A user that visits the webpage for the first time will have to login first, the application structure has an auth service which checks to see if there is a current user, else the application content is off limits. This works in addition to browser storage to allow already logged in users to enter the website easily the second time they visit. The login portal itself is basic; it in corporates the powerful Angular Ng module with conditional rendering for the login and registration pages. The functionality of this page will be detailed in the backend. 
